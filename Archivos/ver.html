@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ver</title>
+    <style>
+        /* Estilo general del cuerpo */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Georgia', serif; /* Fuente formal */
+            background-color: black;
+            color: white;
+            overflow: hidden; /* Evita el scroll */
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            position: relative;
+        }
+
+        /* Estilo del texto */
+        .message {
+            font-size: 1em; /* Tamaño de la fuente ajustado */
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Sombra para efecto cinematográfico */
+        }
+
+        /* Estilo para la música de fondo */
+        audio {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Mensaje central -->
+    <div class="message">
+        Esta película sigue en producción<br>
+        Estado actual: 25% Hecho
+    </div>
+
+    <!-- Música de fondo -->
+    <audio id="background-audio" autoplay loop>
+        <source src="dreamdeath.mp3" type="audio/mp3">
+        Tu navegador no soporta el elemento de audio.
+    </audio>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const audio = document.getElementById('background-audio');
+
+            const playAudio = async () => {
+                try {
+                    await audio.play();
+                } catch (err) {
+                    console.log("El navegador bloqueó la reproducción automática.");
+                    document.body.addEventListener('click', function() {
+                        audio.play();
+                    }, { once: true });
+                }
+            };
+
+            playAudio();
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Información</title>
+    <link rel="icon" href="favicon_image.png" type="image/png">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            overflow-y: scroll;
+            background-image: url('trippycolors.png');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+
+        h1 {
+            font-family: 'Caveat', cursive;
+            font-size: 3em;
+            color: white;
+            text-align: center;
+            margin: 0;
+            padding: 20px;
+        }
+
+        p {
+            font-family: 'Caveat', cursive;
+            font-size: 1.5em;
+            color: white;
+            text-align: center;
+            margin: 0;
+            padding: 0 20px;
+        }
+
+        .credits {
+            font-family: 'Caveat', cursive;
+            font-size: 1.5em;
+            color: white;
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .credits span {
+            display: block;
+            margin: 10px 0;
+            font-weight: bold;
+            text-decoration: underline;
+        }
+
+        .credits div {
+            margin: 10px 0;
+        }
+
+        .youtube-link {
+            display: block;
+            font-family: 'Caveat', cursive;
+            font-size: 1.5em;
+            color: white;
+            text-align: center;
+            margin: 20px 0;
+            text-decoration: underline;
+            font-weight: bold;
+        }
+
+        @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&display=swap');
+        
+        audio {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Información</h1>
+    
+    <p>Esta película trata acerca de Mark, alguien quien no encuentra sentido a la vida, por lo que escapa terminando en un mundo extraño donde la imaginación no tiene límites... ¿O sí?</p>
+
+    <div class="credits">
+        <span>Principal</span>
+        <div>Equipo: MarcosSunglasses</div>
+        <div>Director: Marco</div>
+        <div>Ayudante: Dylan</div>
+        
+        <span>Producción</span>
+        <div>Guion: Marco</div>
+        <div>Escenarios: Marco</div>
+        <div>Edición: Marco</div>
+        
+        <span>Personajes</span>
+        <div>Todos excepto Ey4: Marco</div>
+        <div>Ey4: Jhon</div>
+        
+        <span>Música</span>
+        <div>Lebanon Hanover - Gallowdance</div>
+        <div>C418 - Key</div>
+        <div>AIVA - DREAMCORE</div>
+        <div>Graham Kartna - Browser History</div>
+        <div>Metaroom - God Race (Templation Stairway)</div>
+        <div>Marco - DreamDeath</div>
+        <div>Marco, Leandro - Deep Soul</div>
+        
+        <span>Actores de voz</span>
+        <div>Marco - Mark</div>
+        <div>Renzo - Ey1</div>
+        <div>Paulo - Ey2</div>
+        <div>Thiago - Ey3</div>
+        <div>Hammel - Ey4</div>
+        <div>Leandro - Ey5</div>
+        <div>Nicolas - Musom</div>
+        <div>Jhon - Tri</div>
+        <div>Manuel - Espun</div>
+        <div>Jhon - Ay</div>
+        <div>Jesus - Ametyst</div>
+        <div>Jose - ΩΩΩ</div>
+        
+        <span>Inspirado en: Imágenes Dreamcore</span>
+    </div>
+
+    <a href="https://www.youtube.com/@dreamdeathmovie" class="youtube-link">YouTube</a>
+
+    <audio id="background-audio" autoplay loop>
+        <source src="browser_history.mp3" type="audio/mp3">
+        Tu navegador no soporta el elemento de audio.
+    </audio>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const audio = document.getElementById('background-audio');
+
+            const playAudio = async () => {
+                try {
+                    await audio.play();
+                } catch (err) {
+                    console.log("El navegador bloqueó la reproducción automática.");
+                    document.body.addEventListener('click', function() {
+                        audio.play();
+                    }, { once: true });
+                }
+            };
+
+            playAudio();
+        });
+    </script>
+
+</body>
+</html>
