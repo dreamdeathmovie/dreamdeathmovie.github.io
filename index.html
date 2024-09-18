@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DreamDeath</title>
+    <link rel="icon" href="Archivos/favicon_image.png" type="image/png">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            overflow-x: hidden;
+            height: 100vh;
+            text-align: center;
+            position: relative;
+        }
+
+        .sliding-background {
+            background-image: url('Archivos/background_pattern.png');
+            background-repeat: repeat;
+            background-size: cover;
+            width: 100%;
+            height: 100vh;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: -1;
+        }
+
+        .title-container {
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            position: relative;
+            z-index: 1;
+        }
+
+        .title-header {
+            display: flex;
+            align-items: center;
+        }
+
+        .title-image {
+            max-width: 70%;
+            height: auto;
+            margin-top: 20px;
+        }
+
+        .info-button {
+            background-color: transparent;
+            border: none;
+            margin-left: 0;
+            cursor: pointer;
+        }
+
+        .info-button img {
+            width: 50px;
+            height: auto;
+        }
+
+        .subtitle {
+            font-family: 'Caveat', cursive;
+            font-size: 1.5em;
+            color: white;
+            margin: 0;
+        }
+
+        .view-button {
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        .view-button img {
+            width: auto;
+            height: 100px;
+        }
+
+        .bannerx-image {
+            margin-top: 20px;
+            width: 50%;
+            max-width: 100%;
+            height: auto;
+        }
+
+        .bannery-left,
+        .bannery-right {
+            height: auto;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .bannery-left {
+            left: 20px;
+        }
+
+        .bannery-right {
+            right: 20px;
+        }
+
+        .director-text {
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            font-size: 1.2em;
+            color: white;
+            margin-top: 20px;
+        }
+
+        @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&display=swap');
+
+        audio {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="title-container">
+        <div class="title-header">
+            <img src="Archivos/title_image.png" alt="DreamDeath Title" class="title-image">
+            <a href="Archivos/info.html" class="info-button">
+                <img src="Archivos/info_icon.png" alt="Info">
+            </a>
+        </div>
+
+        <p class="subtitle">Una película acerca de un mundo donde la imaginación no tiene límites... ¿O sí?</p>
+
+        <a href="Archivos/proximamente.html" class="view-button">
+            <img src="Archivos/watch_button.png" alt="Ver">
+        </a>
+
+        <img src="Archivos/banner_x_small.png" alt="BannerX" class="bannerx-image">
+
+        <p class="director-text">Directo por: MarcosSunglasses</p>
+
+        <img src="Archivos/banner_y_vertical.png" alt="Bannery Left" class="bannery-left">
+        <img src="Archivos/banner_y_vertical.png" alt="Bannery Right" class="bannery-right">
+    </div>
+
+    <div class="sliding-background"></div>
+
+    <audio id="background-audio" autoplay loop>
+        <source src="Archivos/background_music.ogg" type="audio/ogg">
+        Tu navegador no soporta el elemento de audio.
+    </audio>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const audio = document.getElementById('background-audio');
+
+            const playAudio = async () => {
+                try {
+                    await audio.play();
+                } catch (err) {
+                    console.log("El navegador bloqueó la reproducción automática.");
+                    document.body.addEventListener('click', function() {
+                        audio.play();
+                    }, { once: true });
+                }
+            };
+
+            playAudio();
+        });
+    </script>
+
+</body>
+</html>
