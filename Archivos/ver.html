@@ -3,69 +3,96 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="favicon_image.png" type="image/png">
     <title>Ver</title>
     <style>
-        /* Estilo general del cuerpo */
         body {
             margin: 0;
             padding: 0;
-            font-family: 'Georgia', serif; /* Fuente formal */
             background-color: black;
             color: white;
-            overflow: hidden; /* Evita el scroll */
+            font-family: "Georgia", serif;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
             text-align: center;
+        }
+
+        .header {
+            margin-top: 40px;
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 2.2em;
+            font-weight: normal;
+        }
+
+        .header p {
+            margin: 10px 0 0 0;
+            font-size: 1em;
+            font-weight: normal;
+        }
+
+        .center-link {
+            flex-grow: 1;
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
-            position: relative;
         }
 
-        /* Estilo del texto */
-        .message {
-            font-size: 1em; /* Tamaño de la fuente ajustado */
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Sombra para efecto cinematográfico */
+        .trailer-link {
+            font-size: 1.3em;
+            text-decoration: underline;
+            cursor: pointer;
         }
 
-        /* Estilo para la música de fondo */
-        audio {
-            display: none;
+        /* Pantalla de cine */
+        .cinema-player {
+            display: none; /* Oculto hasta hacer clic */
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: black;
+            justify-content: center;
+            align-items: center;
+            z-index: 999;
+        }
+
+        .cinema-player iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
         }
     </style>
 </head>
 <body>
 
-    <!-- Mensaje central -->
-    <div class="message">
-        Esta película sigue en producción<br>
-        Estado actual: 45% Hecho<br>
-        El trailer saldra pronto.
+    <!-- Encabezado -->
+    <div class="header">
+        <h1>DreamDeath</h1>
+        <p>Esta película sigue en producción, actualmente con el 50% hecho</p>
     </div>
 
-    <!-- Música de fondo -->
-    <audio id="background-audio" autoplay loop>
-        <source src="dreamdeath.mp3" type="audio/mp3">
-        Tu navegador no soporta el elemento de audio.
-    </audio>
+    <!-- Link al centro -->
+    <div class="center-link">
+        <span class="trailer-link" onclick="openCinema()">Ver trailer</span>
+    </div>
+
+    <!-- Reproductor estilo cine -->
+    <div class="cinema-player" id="cinemaPlayer">
+        <iframe id="youtubePlayer" src="" allowfullscreen></iframe>
+    </div>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const audio = document.getElementById('background-audio');
-
-            const playAudio = async () => {
-                try {
-                    await audio.play();
-                } catch (err) {
-                    console.log("El navegador bloqueó la reproducción automática.");
-                    document.body.addEventListener('click', function() {
-                        audio.play();
-                    }, { once: true });
-                }
-            };
-
-            playAudio();
-        });
+        function openCinema() {
+            const player = document.getElementById("youtubePlayer");
+            document.getElementById("cinemaPlayer").style.display = "flex";
+            player.src = "https://www.youtube.com/embed/grGt7rPu1I0?autoplay=1";
+        }
     </script>
 
 </body>
