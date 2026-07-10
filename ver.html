@@ -43,7 +43,9 @@
             gap: 30px;
         }
 
-        .trailer-link, .otras-link {
+        .trailer-link,
+        .movie-link,
+        .otras-link {
             font-size: 1.3em;
             text-decoration: underline;
             cursor: pointer;
@@ -71,7 +73,7 @@
 
         /* Panel minimalista pantalla completa */
         .panel {
-            display: none; /* Cerrado al iniciar */
+            display: none;
             position: fixed;
             top: 0;
             left: 0;
@@ -93,6 +95,8 @@
         }
 
         .panel a {
+            display: block;
+            margin: 12px 0;
             font-size: 1.5em;
             color: white;
             text-decoration: underline;
@@ -113,32 +117,58 @@
     <!-- Encabezado -->
     <div class="header">
         <h1>DreamDeath</h1>
-        <p>Esta película sigue en producción, actualmente con el 50% hecho</p>
+        <p>Puedes ver la película en esta pagina.</p>
     </div>
 
     <!-- Links al centro -->
     <div class="center-link">
-        <span class="trailer-link" onclick="openCinema()">Ver trailer</span>
-        <span class="otras-link" onclick="openPanel()">Otras películas</span>
+        <span class="trailer-link" onclick="openVideo('https://www.youtube.com/embed/grGt7rPu1I0?autoplay=1')">
+            Ver trailer
+        </span>
+
+        <span class="movie-link" onclick="openVideo('https://www.youtube.com/embed/Q4IUOlAGbBg?autoplay=1')">
+            Ver película
+        </span>
+
+        <span class="otras-link" onclick="openPanel()">
+            Otras películas
+        </span>
     </div>
 
     <!-- Reproductor estilo cine -->
     <div class="cinema-player" id="cinemaPlayer">
-        <iframe id="youtubePlayer" src="" allowfullscreen></iframe>
+        <iframe
+            id="youtubePlayer"
+            src=""
+            allow="autoplay; encrypted-media"
+            allowfullscreen>
+        </iframe>
     </div>
 
     <!-- Panel minimalista pantalla completa -->
     <div class="panel" id="panel">
         <span class="close-btn" onclick="closePanel()">✕</span>
+
         <h2>Otras peliculas</h2>
-        <a href="https://marcossunglasses.github.io/Archivos/TobogAnthony.html">TobogAnthony</a>
+
+        <a href="https://marcossunglasses.github.io/proyectos/toboganthony.html">
+            TobogAnthony
+        </a>
+
+        <a href="#" onclick="openVideo('https://www.youtube.com/embed/OMKaJBscxvs?autoplay=1'); return false;">
+            An empty farewell after the end of the absolute in a relative reality of time
+        </a>
+
+        <a href="#" onclick="openVideo('https://www.youtube.com/embed/ksOrwx3pB0U?autoplay=1'); return false;">
+            Creacion inspiradora
+        </a>
     </div>
 
     <script>
-        function openCinema() {
-            const player = document.getElementById("youtubePlayer");
+        function openVideo(url) {
+            document.getElementById("panel").style.display = "none";
             document.getElementById("cinemaPlayer").style.display = "flex";
-            player.src = "https://www.youtube.com/embed/grGt7rPu1I0?autoplay=1";
+            document.getElementById("youtubePlayer").src = url;
         }
 
         function openPanel() {
